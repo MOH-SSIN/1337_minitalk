@@ -1,11 +1,20 @@
-
-
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/04/01 10:21:30 by mez-zahi          #+#    #+#              #
+#    Updated: 2025/04/02 12:05:18 by mez-zahi         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
 NAME_CLIENT = client
 NAME_SERVER = server
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+# CFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
 
 HEADER = src/minitalk.h libft/libft.h
@@ -13,29 +22,35 @@ HEADER = src/minitalk.h libft/libft.h
 LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
-SRCS = src/client.c src/server.c
+SRCS_CLIENT = src/client.c
+SRCS_UTLIS = src/client_utlis.c
+SRCS_SERVER = src/server.c
 
-OBJS = $(SRCS:.c=.o)
+OBJS_CLIENT = $(SRCS_CLIENT:.c=.o) $(SRCS_UTLIS:.c=.o)
+OBJS_SERVER = $(SRCS_SERVER:.c=.o)
 
-all : $(NAME)
+all: $(LIBFT) $(NAME_CLIENT) $(NAME_SERVER)
 
-(NAME): $(OBJS) $(LIBFT)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
+$(LIBFT):
+	make -C $(LIBFT_DIR)
 
-$(LIBFT): $(LIBFT_DIR)/*.c $(LIBFT_DIR)/*.h
-	@make -C $(LIBFT_DIR)
+$(NAME_CLIENT): $(OBJS_CLIENT) $(LIBFT)
+	$(CC) $(OBJS_CLIENT) $(LIBFT) -o $(NAME_CLIENT)
+
+$(NAME_SERVER): $(OBJS_SERVER) $(LIBFT)
+	$(CC) $(OBJS_SERVER) $(LIBFT) -o $(NAME_SERVER)
 
 %.o: %.c $(HEADER)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(OBJS_CLIENT) $(OBJS_SERVER)
 	make -C $(LIBFT_DIR) clean
 
-fclean : clean 
-	$(RM) $(NAME)
-	@make -C $(LIBFT_DIR) fclean
+fclean: clean
+	$(RM) $(NAME_CLIENT) $(NAME_SERVER) $(LIBFT)
+	make -C $(LIBFT_DIR) fclean
 
 re: fclean all
 
-.PHONY: clean fclean re all bonus
+.PHONY: clean fclean re all
