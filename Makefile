@@ -6,7 +6,7 @@
 #    By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/01 10:21:30 by mez-zahi          #+#    #+#              #
-#    Updated: 2025/04/02 12:05:18 by mez-zahi         ###   ########.fr        #
+#    Updated: 2025/04/03 17:20:15 by mez-zahi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,11 +22,10 @@ HEADER = src/minitalk.h libft/libft.h
 LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
-SRCS_CLIENT = src/client.c
-SRCS_UTLIS = src/client_utlis.c
-SRCS_SERVER = src/server.c
+SRCS_CLIENT = src/client.c src/client_utlis.c
+SRCS_SERVER = src/server.c src/server_utlis.c
 
-OBJS_CLIENT = $(SRCS_CLIENT:.c=.o) $(SRCS_UTLIS:.c=.o)
+OBJS_CLIENT = $(SRCS_CLIENT:.c=.o)
 OBJS_SERVER = $(SRCS_SERVER:.c=.o)
 
 all: $(LIBFT) $(NAME_CLIENT) $(NAME_SERVER)

@@ -6,7 +6,7 @@
 /*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 10:30:11 by mez-zahi          #+#    #+#             */
-/*   Updated: 2025/04/02 14:03:27 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2025/04/03 17:08:42 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,28 +28,28 @@ int	est_digit(char *str)
 	return (1);
 }
 
-void	 check_argument(int argc, char **argv)
+void	check_argument(int argc, char **argv)
 {
 	int	pid;
 
 	if (argc != 3)
 	{
-		ft_putstr_fd("Erreur : Usage Corect -> ./client <PID> <message>\n",2);
+		ft_putstr_fd("Erreur : Usage Corect -> ./client <PID> <message>\n", 2);
 		exit(1);
 	}
 	if (!est_digit(argv[1]))
 	{
-		ft_putstr_fd("Erreur : Le PID Doit Etre Une Nombre Entier positif\n",2);
+		ft_putstr_fd("Erreur : PID Doit Etre Une Nombre Entier positif\n", 2);
 		exit(1);
 	}
 	if (!argv[2] || !argv[2][0])
 	{
-		ft_putstr_fd("Erreur : Le Message Ne Peut pas Etre Vide\n",2);
+		ft_putstr_fd("Erreur : Le Message Ne Peut pas Etre Vide\n", 2);
 		exit(1);
 	}
 }
 
-void	envoyer_bit(int	pid, char bit)
+void	envoyer_bit(int pid, char bit)
 {
 	int	i;
 
@@ -60,7 +60,8 @@ void	envoyer_bit(int	pid, char bit)
 			kill(pid, SIGUSR2);
 		else
 			kill(pid, SIGUSR1);
-		usleep(100);
+		usleep(500);
+		usleep(500);
 		i--;
 	}
 }
@@ -77,4 +78,4 @@ void	envoyer_message(int pid, char *message)
 	}
 	envoyer_bit(pid, '\0');
 }
-
+// for i in {1..20}; do "string"; done
