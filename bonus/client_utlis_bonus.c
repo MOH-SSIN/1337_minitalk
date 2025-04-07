@@ -6,7 +6,7 @@
 /*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:53:41 by mez-zahi          #+#    #+#             */
-/*   Updated: 2025/04/07 13:09:41 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2025/04/07 17:30:26 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,3 @@ void	envoyer_message(int pid, char *message)
 	}
 	envoyer_bit(pid, '\0');
 }
-// for i in {1..20}; do "string"; done
