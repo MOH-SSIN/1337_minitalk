@@ -6,7 +6,7 @@
 #    By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/01 10:21:30 by mez-zahi          #+#    #+#              #
-#    Updated: 2025/04/07 12:26:58 by mez-zahi         ###   ########.fr        #
+#    Updated: 2025/04/07 17:42:59 by mez-zahi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME_CLIENT_BONUS = client_bonus
 NAME_SERVER_BONUS = server_bonus
 
 CC = cc
-# CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
 
 HEADER = src/minitalk.h libft/libft.h

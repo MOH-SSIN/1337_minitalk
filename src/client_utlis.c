@@ -6,7 +6,7 @@
 /*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 10:30:11 by mez-zahi          #+#    #+#             */
-/*   Updated: 2025/04/03 17:08:42 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2025/04/07 17:43:18 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ int	est_digit(char *str)
 
 void	check_argument(int argc, char **argv)
 {
-	int	pid;
-
 	if (argc != 3)
 	{
 		ft_putstr_fd("Erreur : Usage Corect -> ./client <PID> <message>\n", 2);

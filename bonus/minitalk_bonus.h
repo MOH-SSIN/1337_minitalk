@@ -6,7 +6,7 @@
 /*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:53:24 by mez-zahi          #+#    #+#             */
-/*   Updated: 2025/04/07 17:31:16 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2025/04/07 17:41:40 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,11 @@ typedef struct s_data
 	int	client_pid;
 }	t_data;
 
+// client_utils
 void	check_argument(int argc, char **argv);
 void	envoyer_message(int pid, char *message);
+
+// client_utils
 void	traiter_signal(int sig, siginfo_t *info, void *context);
 void	configurer_signaux(void);
 int		ft_which_byte(unsigned char buffer[4]);
