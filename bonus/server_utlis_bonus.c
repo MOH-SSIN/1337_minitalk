@@ -42,7 +42,7 @@ void	do_process(t_data *set, unsigned char *buffer)
 		{
 			if (buffer[0] == '\0')
 			{
-				write(1, "\n", 1);
+				// write(1, "\n", 1);
 				kill(set->client_pid, SIGUSR1);
 			}
 			else
@@ -70,7 +70,7 @@ void	traiter_signal(int sig, siginfo_t *info, void *context)
 		set.client_pid = info->si_pid;
 		set.bit = 0;
 		set.byte_index = 0;
-		set.expected_bytes = 0;
+		set.expected_bytes = 1;// normalement 1 d
 		ft_memset(buffer, 0, 4);
 	}
 	if (sig == SIGUSR2)

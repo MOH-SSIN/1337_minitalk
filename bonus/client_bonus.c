@@ -15,7 +15,7 @@
 void	signal_ack(int sig)
 {
 	if (sig == SIGUSR1)
-		ft_putstr_fd("Message reçu avec succès\n", 1);
+		ft_putstr_fd("Message reçu vers server avec succès\n", 1);
 }
 
 int	main(int argc, char **argv)
@@ -35,6 +35,6 @@ int	main(int argc, char **argv)
 	sigemptyset(&sa.sa_mask);
 	sigaction(SIGUSR1, &sa, NULL);
 	envoyer_message(pid, argv[2]);
-	pause();
+	// pause();
 	return (0);
 }
