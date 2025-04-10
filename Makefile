@@ -6,7 +6,7 @@
 #    By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/01 10:21:30 by mez-zahi          #+#    #+#              #
-#    Updated: 2025/04/10 16:36:16 by mez-zahi         ###   ########.fr        #
+#    Updated: 2025/04/10 17:44:00 by mez-zahi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,8 +39,8 @@ OBJS_SERVER_BONUS = $(SRCS_SERVER_BONUS:.c=.o)
 
 all: $(LIBFT) $(NAME_CLIENT) $(NAME_SERVER)
 
-$(LIBFT):
-	make -C $(LIBFT_DIR)
+$(LIBFT): $(LIBFT_DIR)/*.c $(LIBFT_DIR)/*.h
+	@make -C $(LIBFT_DIR)
 
 $(NAME_CLIENT): $(OBJS_CLIENT) $(LIBFT)
 	$(CC) $(OBJS_CLIENT) $(LIBFT) -o $(NAME_CLIENT)

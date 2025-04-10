@@ -6,7 +6,7 @@
 /*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 10:21:33 by mez-zahi          #+#    #+#             */
-/*   Updated: 2025/04/07 17:28:59 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2025/04/10 17:45:40 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,11 @@ int	main(int argc, char **argv)
 	sa.sa_handler = signal_ack;
 	sa.sa_flags = 0;
 	sigemptyset(&sa.sa_mask);
-	sigaction(SIGUSR1, &sa, NULL);
+	if (sigaction(SIGUSR1, &sa, NULL) == -1)
+	{
+		ft_putstr_fd("Erreur : Impossible de configurer SIGUSR1 (ack).\n", 2);
+		exit(1);
+	}
 	envoyer_message(pid, argv[2]);
-	// pause();
 	return (0);
 }

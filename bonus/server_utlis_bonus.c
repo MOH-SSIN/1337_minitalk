@@ -6,7 +6,7 @@
 /*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:49:00 by mez-zahi          #+#    #+#             */
-/*   Updated: 2025/04/07 17:39:07 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2025/04/10 17:18:36 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,13 @@ int	ft_which_byte(unsigned char buffer[4])
 	int	expected_bytes;
 
 	expected_bytes = 0;
-	if ((buffer[0] & 128) == 0)//10000000 = 128
+	if ((buffer[0] & 128) == 0)
 		expected_bytes = 1;
-		
-	else if ((buffer[0] & 224) == 192)//11100000 = 224
+	else if ((buffer[0] & 224) == 192)
 		expected_bytes = 2;
-
-	else if ((buffer[0] & 240) == 224)//11110000 = 240
+	else if ((buffer[0] & 240) == 224)
 		expected_bytes = 3;
-
-	else if ((buffer[0] & 248) == 240)//11111000 = 248
+	else if ((buffer[0] & 248) == 240)
 		expected_bytes = 4;
 	return (expected_bytes);
 }
@@ -44,10 +41,7 @@ void	do_process(t_data *set, unsigned char *buffer)
 		if (set->byte_index == set->expected_bytes)
 		{
 			if (buffer[0] == '\0')
-			{
-				// write(1, "\n", 1);
 				kill(set->client_pid, SIGUSR1);
-			}
 			else
 				write(1, buffer, set->expected_bytes);
 			set->byte_index = 0;
@@ -73,7 +67,7 @@ void	traiter_signal(int sig, siginfo_t *info, void *context)
 		set.client_pid = info->si_pid;
 		set.bit = 0;
 		set.byte_index = 0;
-		set.expected_bytes = 1;// normalement 1 d
+		set.expected_bytes = 1;
 		ft_memset(buffer, 0, 4);
 	}
 	if (sig == SIGUSR2)
