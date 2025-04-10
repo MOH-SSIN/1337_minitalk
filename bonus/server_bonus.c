@@ -20,10 +20,10 @@ int	main(int argc, char **argv)
 		ft_putstr_fd("Usage : ./server (sans argument)\n", 2);
 		return (1);
 	}
-	configurer_signaux();
 	ft_putstr_fd("PID du serveur : ", 1);
 	ft_putnbr_fd(getpid(), 1);
 	ft_putstr_fd("\n", 1);
+	configurer_signaux();
 	while (1)
 		pause();
 	return (0);

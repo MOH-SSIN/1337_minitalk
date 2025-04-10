@@ -18,13 +18,16 @@ int	ft_which_byte(unsigned char buffer[4])
 	int	expected_bytes;
 
 	expected_bytes = 0;
-	if ((buffer[0] & 128) == 0)
+	if ((buffer[0] & 128) == 0)//10000000 = 128
 		expected_bytes = 1;
-	else if ((buffer[0] & 224) == 192)
+		
+	else if ((buffer[0] & 224) == 192)//11100000 = 224
 		expected_bytes = 2;
-	else if ((buffer[0] & 240) == 224)
+
+	else if ((buffer[0] & 240) == 224)//11110000 = 240
 		expected_bytes = 3;
-	else if ((buffer[0] & 248) == 240)
+
+	else if ((buffer[0] & 248) == 240)//11111000 = 248
 		expected_bytes = 4;
 	return (expected_bytes);
 }
